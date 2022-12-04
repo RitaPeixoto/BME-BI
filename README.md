@@ -42,10 +42,8 @@ On Tableau is only necessary to connect to the postgres server and everything sh
 
 ## Visualizations 
 
-The result from the presentation layer is available in this [link](https://public.tableau.com/app/profile/rita7831/viz/Netview/NetfflixSubscriptionAnalysis) .
+The result from the presentation layer is available in this [link](https://public.tableau.com/app/profile/rita7831/viz/Netview/Service) .
 
 
-## Results
-
-
-
+## Report
+The documentation report of this project can be found in this repository under the name "Business Intelligence Homework - Rita Peixoto.pdf".
