@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>subscription_transformation</name>
+    <name>revenue_country_transformation</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -428,10 +427,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2022/11/29 23:22:08.234</created_date>
+    <created_date>2022/12/04 00:45:01.135</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/11/29 23:22:08.234</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2022/12/04 00:45:01.135</modified_date>
+    <key_for_session_key/>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -489,63 +488,73 @@
   </connection>
   <order>
     <hop>
-      <from>Read Countries' Average Salary</from>
-      <to>Sort rows 2</to>
+      <from>Add id</from>
+      <to>Revenue-Area Table</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Read Subscription Fee</from>
-      <to>Sort rows</to>
+      <from>Extract quarter and year</from>
+      <to>Remove revenue</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Countries Average Salary to Subscription data</from>
-      <to>Get only countries with data</to>
+      <from>Read revenue2018-2020</from>
+      <to>Row normaliser</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 2</from>
-      <to>Replace in Czech Republic for Czechia</to>
+      <from>Remove revenue</from>
+      <to>Rename fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows</from>
-      <to>Merge Countries Average Salary to Subscription data</to>
+      <from>Rename fields</from>
+      <to>Add id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Replace in Czech Republic for Czechia</from>
-      <to>Merge Countries Average Salary to Subscription data</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get only countries with data</from>
-      <to>Add information of missing countries</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add information of missing countries</from>
-      <to>Remove unecessary fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove unecessary fields</from>
-      <to>Select and rename fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select and rename fields</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Subscription Table</to>
+      <from>Row normaliser</from>
+      <to>Extract quarter and year</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add information of missing countries</name>
+    <name>Add id</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>id</valuename>
+    <use_database>N</use_database>
+    <connection/>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Extract quarter and year</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -563,22 +572,67 @@
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
 
-var new_salary;
+var quarter1;
+var year1;
 
-new_salary = Average_Salary;
 
-if(Country == "San Marino") new_salary = 2364,77;
-if(Country == "Liechtenstein") new_salary = 6000;
-if(Country == "Monaco") new_salary = 4456,28; 
-if(Country == "Gibraltar") new_salary = 3724,47; 
-if(Country == "Honduras") new_salary = 2540; </jsScript_script>
+if(revenue == "Q1___2018"){
+	quarter1 = 1;
+	year1 = 2018;
+}
+if(revenue == "Q2___2018"){
+	quarter1 = 2;
+	year1 = 2018;
+}
+if(revenue == "Q3___2018"){
+	quarter1 = 3;
+	year1 = 2018;
+}
+if(revenue == "Q4___2018"){
+	quarter1 = 4;
+	year1 = 2018;
+}
+if(revenue == "Q1___2019"){
+	quarter1 = 1;
+	year1 = 2019;
+}
+if(revenue == "Q2___2019"){
+	quarter1 = 2;
+	year1 = 2019;
+}
+if(revenue == "Q3___2019"){
+	quarter1 = 3;
+	year1 = 2019;
+}
+if(revenue == "Q4___2019"){
+	quarter1 = 4;
+	year1 = 2019;
+}
+if(revenue == "Q1___2020"){
+	quarter1 = 1;
+	year1 = 2020;
+}
+if(revenue == "Q2___2020"){
+	quarter1 = 2;
+	year1 = 2020;
+}
+
+</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>new_salary</name>
-        <rename>new_salary</rename>
-        <type>String</type>
+        <name>quarter1</name>
+        <rename>quarter1</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>year1</name>
+        <rename>year1</rename>
+        <type>Integer</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
@@ -593,202 +647,13 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>288</yloc>
+      <xloc>544</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Get only countries with data</name>
-    <type>FilterRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <send_true_to>Add information of missing countries</send_true_to>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>Country_code</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue/>
-      </condition>
-    </compare>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge Countries Average Salary to Subscription data</name>
-    <type>MergeJoin</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <join_type>FULL OUTER</join_type>
-    <step1>Sort rows</step1>
-    <step2>Replace in Czech Republic for Czechia</step2>
-    <keys_1>
-      <key>Country</key>
-    </keys_1>
-    <keys_2>
-      <key>Country</key>
-    </keys_2>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Read Countries' Average Salary</name>
-    <type>TextFileInput</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <accept_filenames>N</accept_filenames>
-    <passing_through_fields>N</passing_through_fields>
-    <accept_field/>
-    <accept_stepname/>
-    <separator>;</separator>
-    <enclosure>"</enclosure>
-    <enclosure_breaks>N</enclosure_breaks>
-    <escapechar/>
-    <header>Y</header>
-    <nr_headerlines>1</nr_headerlines>
-    <footer>N</footer>
-    <nr_footerlines>1</nr_footerlines>
-    <line_wrapped>N</line_wrapped>
-    <nr_wraps>1</nr_wraps>
-    <layout_paged>N</layout_paged>
-    <nr_lines_per_page>80</nr_lines_per_page>
-    <nr_lines_doc_header>0</nr_lines_doc_header>
-    <noempty>Y</noempty>
-    <include>N</include>
-    <include_field/>
-    <rownum>N</rownum>
-    <rownumByFile>N</rownumByFile>
-    <rownum_field/>
-    <format>DOS</format>
-    <encoding/>
-    <length>Characters</length>
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <file>
-      <name>${PATH}\datasets/CountriesAverageSalary.csv</name>
-      <filemask/>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-      <type>CSV</type>
-      <compression>None</compression>
-    </file>
-    <filters>
-    </filters>
-    <fields>
-      <field>
-        <name>Country</name>
-        <type>String</type>
-        <format/>
-        <currency>€</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>27</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>Average_Salary</name>
-        <type>Number</type>
-        <format>#,###,###.#</format>
-        <currency>€</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>8</length>
-        <precision>3</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-    </fields>
-    <limit>0</limit>
-    <error_ignored>N</error_ignored>
-    <skip_bad_files>N</skip_bad_files>
-    <file_error_field/>
-    <file_error_message_field/>
-    <error_line_skipped>N</error_line_skipped>
-    <error_count_field/>
-    <error_fields_field/>
-    <error_text_field/>
-    <bad_line_files_destination_directory/>
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory/>
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory/>
-    <line_number_files_extension>line</line_number_files_extension>
-    <date_format_lenient>Y</date_format_lenient>
-    <date_format_locale>pt_PT</date_format_locale>
-    <shortFileFieldName/>
-    <pathFieldName/>
-    <hiddenFieldName/>
-    <lastModificationTimeFieldName/>
-    <uriNameFieldName/>
-    <rootUriNameFieldName/>
-    <extensionFieldName/>
-    <sizeFieldName/>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Read Subscription Fee</name>
+    <name>Read revenue2018-2020</name>
     <type>TextFileInput</type>
     <description/>
     <distribute>Y</distribute>
@@ -826,7 +691,7 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>${PATH}\datasets\Netflix subscription fee Dec-2021.csv</name>
+      <name>${PATH}\datasets\NetflixsRevenue2018toQ2_2020.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -843,7 +708,7 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
     </filters>
     <fields>
       <field>
-        <name>Country_code</name>
+        <name>Area</name>
         <type>String</type>
         <format/>
         <currency>€</currency>
@@ -852,28 +717,13 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
         <nullif>-</nullif>
         <ifnull/>
         <position>-1</position>
-        <length>2</length>
+        <length>31</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>Country</name>
-        <type>String</type>
-        <format/>
-        <currency>€</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <nullif>-</nullif>
-        <ifnull/>
-        <position>-1</position>
-        <length>14</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-      </field>
-      <field>
-        <name>Total_Library_Size</name>
+        <name>Q1___2018</name>
         <type>Integer</type>
         <format>#</format>
         <currency>€</currency>
@@ -888,7 +738,7 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>No._of_TV_Shows</name>
+        <name>Q2___2018</name>
         <type>Integer</type>
         <format>#</format>
         <currency>€</currency>
@@ -903,7 +753,7 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>No._of_Movies</name>
+        <name>Q3___2018</name>
         <type>Integer</type>
         <format>#</format>
         <currency>€</currency>
@@ -918,12 +768,12 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>Cost_Per_Month___Basic_($)</name>
-        <type>Number</type>
-        <format>#.#</format>
+        <name>Q4___2018</name>
+        <type>Integer</type>
+        <format>#</format>
         <currency>€</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal>,</decimal>
+        <group>.</group>
         <nullif>-</nullif>
         <ifnull/>
         <position>-1</position>
@@ -933,12 +783,12 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>Cost_Per_Month___Standard_($)</name>
-        <type>Number</type>
-        <format>#.#</format>
+        <name>Q1___2019</name>
+        <type>Integer</type>
+        <format>#</format>
         <currency>€</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal>,</decimal>
+        <group>.</group>
         <nullif>-</nullif>
         <ifnull/>
         <position>-1</position>
@@ -948,12 +798,72 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
         <repeat>N</repeat>
       </field>
       <field>
-        <name>Cost_Per_Month___Premium_($)</name>
-        <type>Number</type>
-        <format>#.#</format>
+        <name>Q2___2019</name>
+        <type>Integer</type>
+        <format>#</format>
         <currency>€</currency>
-        <decimal>.</decimal>
-        <group>,</group>
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>Q3___2019</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>Q4___2019</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>Q1___2020</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
+        <nullif>-</nullif>
+        <ifnull/>
+        <position>-1</position>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+      <field>
+        <name>Q2___2020</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>€</currency>
+        <decimal>,</decimal>
+        <group>.</group>
         <nullif>-</nullif>
         <ifnull/>
         <position>-1</position>
@@ -997,13 +907,13 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>288</yloc>
+      <xloc>224</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove unecessary fields</name>
+    <name>Remove revenue</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -1016,10 +926,7 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
     <fields>
       <select_unspecified>N</select_unspecified>
       <remove>
-        <name>Country_1</name>
-      </remove>
-      <remove>
-        <name>Average_Salary</name>
+        <name>revenue</name>
       </remove>
     </fields>
     <attributes/>
@@ -1031,52 +938,13 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>288</yloc>
+      <xloc>704</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Replace in Czech Republic for Czechia</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>Country</in_stream_name>
-        <out_stream_name/>
-        <use_regex>no</use_regex>
-        <replace_string>Czech Republic</replace_string>
-        <replace_by_string>Czechia</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select and rename fields</name>
+    <name>Rename fields</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -1088,32 +956,16 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>Country_code</name>
+        <name>year1</name>
+        <rename>year</rename>
       </field>
       <field>
-        <name>Country</name>
+        <name>quarter1</name>
+        <rename>quarter</rename>
       </field>
       <field>
-        <name>Total_Library_Size</name>
-      </field>
-      <field>
-        <name>No._of_TV_Shows</name>
-      </field>
-      <field>
-        <name>No._of_Movies</name>
-      </field>
-      <field>
-        <name>Cost_Per_Month___Basic_($)</name>
-      </field>
-      <field>
-        <name>Cost_Per_Month___Standard_($)</name>
-      </field>
-      <field>
-        <name>Cost_Per_Month___Premium_($)</name>
-      </field>
-      <field>
-        <name>new_salary</name>
-        <rename>Average_Salary</rename>
+        <name>Value</name>
+        <rename>revenue</rename>
       </field>
       <select_unspecified>Y</select_unspecified>
     </fields>
@@ -1126,278 +978,13 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>816</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>Country_code</name>
-        <rename>Country_code</rename>
-        <type>None</type>
-        <length>2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Country</name>
-        <rename>Country</rename>
-        <type>None</type>
-        <length>14</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Total_Library_Size</name>
-        <rename>Total_Library_Size</rename>
-        <type>None</type>
-        <length>15</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>No._of_TV_Shows</name>
-        <rename>No._of_TV_Shows</rename>
-        <type>None</type>
-        <length>15</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>No._of_Movies</name>
-        <rename>No._of_Movies</rename>
-        <type>None</type>
-        <length>15</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Cost_Per_Month___Basic_($)</name>
-        <rename>Cost_Per_Month___Basic_($)</rename>
-        <type>Number</type>
-        <length>10</length>
-        <precision>1</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Cost_Per_Month___Standard_($)</name>
-        <rename>Cost_Per_Month___Standard_($)</rename>
-        <type>Number</type>
-        <length>10</length>
-        <precision>1</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Cost_Per_Month___Premium_($)</name>
-        <rename>Cost_Per_Month___Premium_($)</rename>
-        <type>Number</type>
-        <length>10</length>
-        <precision>1</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>Average_Salary</name>
-        <rename>Average_Salary</rename>
-        <type>Number</type>
-        <length>-2</length>
-        <precision>2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol>.</decimal_symbol>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1168</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Country</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>272</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>Country</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Subscription Table</name>
+    <name>Revenue-Area Table</name>
     <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
@@ -1409,7 +996,7 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
     </partitioning>
     <connection>PostgreSQL</connection>
     <schema>public</schema>
-    <table>subscription</table>
+    <table>revenue_area</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -1426,40 +1013,24 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
     <return_field/>
     <fields>
       <field>
-        <column_name>country_code</column_name>
-        <stream_name>Country_code</stream_name>
+        <column_name>area</column_name>
+        <stream_name>Area</stream_name>
       </field>
       <field>
-        <column_name>country</column_name>
-        <stream_name>Country</stream_name>
+        <column_name>year</column_name>
+        <stream_name>year</stream_name>
       </field>
       <field>
-        <column_name>total_library_size</column_name>
-        <stream_name>Total_Library_Size</stream_name>
+        <column_name>quarter</column_name>
+        <stream_name>quarter</stream_name>
       </field>
       <field>
-        <column_name>no_of_tvshows</column_name>
-        <stream_name>No._of_TV_Shows</stream_name>
+        <column_name>revenue</column_name>
+        <stream_name>revenue</stream_name>
       </field>
       <field>
-        <column_name>no_of_movies</column_name>
-        <stream_name>No._of_Movies</stream_name>
-      </field>
-      <field>
-        <column_name>cost_per_month_basic</column_name>
-        <stream_name>Cost_Per_Month___Basic_($)</stream_name>
-      </field>
-      <field>
-        <column_name>cost_per_month_standard</column_name>
-        <stream_name>Cost_Per_Month___Standard_($)</stream_name>
-      </field>
-      <field>
-        <column_name>cost_per_month_premium</column_name>
-        <stream_name>Cost_Per_Month___Premium_($)</stream_name>
-      </field>
-      <field>
-        <column_name>average_salary</column_name>
-        <stream_name>Average_Salary</stream_name>
+        <column_name>id</column_name>
+        <stream_name>id</stream_name>
       </field>
     </fields>
     <attributes/>
@@ -1471,7 +1042,85 @@ if(Country == "Honduras") new_salary = 2540; </jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1280</xloc>
+      <xloc>1072</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normaliser</name>
+    <type>Normaliser</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <typefield>revenue</typefield>
+    <fields>
+      <field>
+        <name>Q1___2018</name>
+        <value>Q1___2018</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q2___2018</name>
+        <value>Q2___2018</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q3___2018</name>
+        <value>Q3___2018</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q4___2018</name>
+        <value>Q4___2018</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q1___2019</name>
+        <value>Q1___2019</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q2___2019</name>
+        <value>Q2___2019</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q3___2019</name>
+        <value>Q3___2019</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q4___2019</name>
+        <value>Q4___2019</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q1___2020</name>
+        <value>Q1___2020</value>
+        <norm>Value</norm>
+      </field>
+      <field>
+        <name>Q2___2020</name>
+        <value>Q2___2020</value>
+        <norm>Value</norm>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>400</xloc>
       <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>

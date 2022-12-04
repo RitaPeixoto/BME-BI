@@ -371,7 +371,7 @@
       <fields>
         <field>
           <variable_name>PATH</variable_name>
-          <variable_value>C:\Users\ritap\OneDrive\Ambiente de Trabalho\Faculdade\5 Ano\Business Intelligence\Homework\</variable_value>
+          <variable_value>C:\Users\ritap\OneDrive\Ambiente de Trabalho\Faculdade\5 Ano\Business Intelligence\Homework\BME-BI</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
@@ -565,7 +565,7 @@ CREATE TABLE TitleService (
       <to>Transformation</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
       <evaluation>Y</evaluation>
       <unconditional>N</unconditional>
     </hop>

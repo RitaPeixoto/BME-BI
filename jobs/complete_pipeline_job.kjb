@@ -11,6 +11,57 @@
   <modified_date>2022/12/02 00:51:24.180</modified_date>
   <parameters>
     </parameters>
+  <connection>
+    <name>PostgreSQL</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>postgres</database>
+    <port>5432</port>
+    <username>postgres</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb17ab64c89baacd</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>5432</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -304,7 +355,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>160</xloc>
+      <xloc>64</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -319,14 +370,14 @@
       <fields>
         <field>
           <variable_name>PATH</variable_name>
-          <variable_value>C:\Users\ritap\OneDrive\Ambiente de Trabalho\Faculdade\5 Ano\Business Intelligence\Homework\</variable_value>
+          <variable_value>C:\Users\ritap\OneDrive\Ambiente de Trabalho\Faculdade\5 Ano\Business Intelligence\Homework\BME-BI</variable_value>
           <variable_type>JVM</variable_type>
         </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>256</xloc>
+      <xloc>160</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -355,11 +406,14 @@
         <field>
           <name>${PATH}\datasets\Netflix subscription fee Dec-2021.csv</name>
         </field>
+        <field>
+          <name>${PATH}\datasets\CountriesAverageSalary.csv</name>
+        </field>
       </fields>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>384</xloc>
+      <xloc>288</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -370,7 +424,7 @@
       <attributes/>
       <connections>
         <connection>
-          <name/>
+          <name>PostgreSQL</name>
           <waitfor>0</waitfor>
           <waittime>millisecond</waittime>
         </connection>
@@ -378,7 +432,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>528</xloc>
+      <xloc>432</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -392,11 +446,11 @@
       <sqlfromfile>T</sqlfromfile>
       <sqlfilename>${PATH}\netview.sql</sqlfilename>
       <sendOneStatement>F</sendOneStatement>
-      <connection/>
+      <connection>PostgreSQL</connection>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>640</xloc>
+      <xloc>544</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -435,7 +489,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>752</xloc>
+      <xloc>656</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -447,7 +501,7 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>1040</xloc>
+      <xloc>1376</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -486,7 +540,85 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>896</xloc>
+      <xloc>832</xloc>
+      <yloc>96</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Subscribers' Transformation</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>C:/Users/ritap/OneDrive/Ambiente de Trabalho/Faculdade/5 Ano/Business Intelligence/Homework/BME-BI/transformations/subscribers_country_transformation.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1056</xloc>
+      <yloc>96</yloc>
+      <attributes_kjc/>
+    </entry>
+    <entry>
+      <name>Revenue's Transformation</name>
+      <description/>
+      <type>TRANS</type>
+      <attributes/>
+      <specification_method>filename</specification_method>
+      <trans_object_id/>
+      <filename>C:/Users/ritap/OneDrive/Ambiente de Trabalho/Faculdade/5 Ano/Business Intelligence/Homework/BME-BI/transformations/revenue_country_transformation.ktr</filename>
+      <transname/>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile/>
+      <logext/>
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name/>
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <suppress_result_data>N</suppress_result_data>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>1248</xloc>
       <yloc>96</yloc>
       <attributes_kjc/>
     </entry>
@@ -548,6 +680,24 @@
     </hop>
     <hop>
       <from>Subscription's Transformation</from>
+      <to>Subscribers' Transformation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Subscribers' Transformation</from>
+      <to>Revenue's Transformation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Revenue's Transformation</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>

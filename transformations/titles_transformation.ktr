@@ -489,6 +489,96 @@
   </connection>
   <order>
     <hop>
+      <from>Add id field 2</from>
+      <to>Row normaliser - services</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add id field</from>
+      <to>Merge Streaming services with titles</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add id field</from>
+      <to>Services Table</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Wait for other tables to be created</from>
+      <to>TitleService Table</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create service column</from>
+      <to>Sort rows 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create service column 2</from>
+      <to>Sort rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Create service column 3</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decide values on merge</from>
+      <to>Remove unused fields 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decide values on merge 2</from>
+      <to>Remove unused fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Decide values on merge 3</from>
+      <to>Remove unused fields 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Select only streaming_service and id fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Select fields to use</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove unecessary rows</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Amazon with Disney+</from>
+      <to>Decide values on merge</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Netflix with Amazon with Disney+</from>
+      <to>Decide values on merge 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Streaming services with titles</from>
+      <to>Wait for other tables to be created</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge competition data with netflix/disney+/amazon prime</from>
+      <to>Decide values on merge 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>One-hot encoding services</from>
+      <to>Remove unused fields 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Read Amazon Prime titles</from>
       <to>Remove s in ID</to>
       <enabled>Y</enabled>
@@ -499,13 +589,43 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Read Movies on Streaming Platforms</from>
+      <to>Remove semicolon from type field</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Read Netflix Titles</from>
       <to>Remove s in ID 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Read Movies on Streaming Platforms</from>
-      <to>Remove semicolon from type field</to>
+      <from>Remove description &amp; country &amp; show_id</from>
+      <to>Rename rating to age</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove description &amp; country 2  &amp; show_id</from>
+      <to>Rename rating to age 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove description &amp; country 3 &amp; show_id</from>
+      <to>Rename rating to age 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove s in ID</from>
+      <to>Remove description &amp; country &amp; show_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove s in ID 2</from>
+      <to>Remove description &amp; country 2  &amp; show_id</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove s in ID 3</from>
+      <to>Remove description &amp; country 3 &amp; show_id</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -514,83 +634,33 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Remove unused fields</from>
+      <to>Rename new fields 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove unused fields 2</from>
+      <to>Rename new fields 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove unused fields 3</from>
+      <to>Rename new fields 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Rename Rotten_tomatoes, remove id columns</from>
-      <to>Replace in string 4</to>
+      <to>Make type and age in the standard format</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove s in ID</from>
-      <to>Remove description &amp; country</to>
+      <from>Rename new fields 2</from>
+      <to>Sort rows 6</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Remove s in ID 3</from>
-      <to>Remove description &amp; country 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove s in ID 2</from>
-      <to>Remove description &amp; country 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove description &amp; country</from>
-      <to>Rename rating to age</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove description &amp; country 2</from>
-      <to>Rename rating to age 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove description &amp; country 3</from>
-      <to>Rename rating to age 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Replace in string 4</from>
-      <to>Sort rows 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 2</from>
-      <to>Merge Amazon with Disney+</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 3</from>
-      <to>Merge Amazon with Disney+</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Amazon with Disney+</from>
-      <to>Decide values on merge</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decide values on merge</from>
-      <to>Select values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values</from>
-      <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows</from>
-      <to>Merge Netflix with Amazon with Disney+</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Rename rating to age 3</from>
-      <to>Create service column 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Create service column 3</from>
-      <to>Sort rows</to>
+      <from>Rename new fields 2 2</from>
+      <to>One-hot encoding services</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -604,18 +674,73 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Create service column 2</from>
-      <to>Sort rows 2</to>
+      <from>Rename rating to age 3</from>
+      <to>Create service column 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Create service column</from>
-      <to>Sort rows 3</to>
+      <from>Make type and age in the standard format</from>
+      <to>Sort rows 4</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 2</from>
+      <from>Row normaliser - services</from>
+      <to>Remove unecessary rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Remove unused fields 4</from>
+      <to>Rename new fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Rename new fields</from>
       <to>Sort rows 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select only streaming_service and id fields</from>
+      <to>Select Streaming service</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select only streaming_service and id fields</from>
+      <to>Sort rows 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select fields to use</from>
+      <to>Change Type of Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select Streaming service</from>
+      <to>Sort rows 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Change Type of Fields</from>
+      <to>Unique rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Merge Netflix with Amazon with Disney+</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 2</from>
+      <to>Merge Amazon with Disney+</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 3</from>
+      <to>Merge Amazon with Disney+</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 4</from>
+      <to>Merge competition data with netflix/disney+/amazon prime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -624,103 +749,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Decide values on merge 2</from>
-      <to>Remove unused columns</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove unused columns</from>
-      <to>Rename new columns</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Netflix with Amazon with Disney+</from>
-      <to>Decide values on merge 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 4</from>
-      <to>Merge join 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Rename new columns</from>
-      <to>Sort rows 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort rows 6</from>
-      <to>Merge join 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Decide values on merge 3</from>
-      <to>Remove unused columns 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove unused columns 2</from>
-      <to>Rename new columns 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join 3</from>
-      <to>Decide values on merge 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Rename new columns 2</from>
-      <to>Modified JavaScript value 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Modified JavaScript value 3</from>
-      <to>Remove unused columns 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Remove unused columns 3</from>
-      <to>Rename new columns 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Rename new columns 3</from>
-      <to>Add id column</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Row normaliser</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add id column</from>
-      <to>Row normaliser</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Filter rows</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing)</from>
-      <to>Select values 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing)</from>
-      <to>Select values 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 3</from>
-      <to>Select values 5</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 5</from>
-      <to>Sort rows 7</to>
+      <to>Merge competition data with netflix/disney+/amazon prime</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -729,33 +759,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3</from>
-      <to>Sort rows 8</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort rows 8</from>
-      <to>Merge join</to>
+      <to>Merge Streaming services with titles</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Unique rows</from>
-      <to>Add sequence</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add sequence</from>
-      <to>Merge join</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 4</from>
-      <to>Select values 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 6</from>
-      <to>Unique rows 2</to>
+      <to>Add id field</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -764,58 +774,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add sequence</from>
-      <to>Services Table</to>
+      <from>Rename new fields 3</from>
+      <to>Replace in string</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge join</from>
-      <to>Block this step until steps finish</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Block this step until steps finish</from>
-      <to>TitleService Table</to>
+      <from>Replace in string</from>
+      <to>Add id field 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Add id column</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>id</valuename>
-    <use_database>N</use_database>
-    <connection/>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>1</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>768</xloc>
-      <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add sequence</name>
+    <name>Add id field</name>
     <type>Sequence</type>
     <description/>
     <distribute>N</distribute>
@@ -827,7 +797,7 @@
     </partitioning>
     <valuename>id</valuename>
     <use_database>N</use_database>
-    <connection/>
+    <connection>PostgreSQL</connection>
     <schema/>
     <seqname>SEQ_</seqname>
     <use_counter>Y</use_counter>
@@ -844,8 +814,173 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1776</xloc>
-      <yloc>816</yloc>
+      <xloc>1728</xloc>
+      <yloc>784</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Add id field 2</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>id</valuename>
+    <use_database>N</use_database>
+    <connection>PostgreSQL</connection>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>1</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Change Type of Fields</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>title</name>
+        <rename>title</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>age</name>
+        <rename>age</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>release_year</name>
+        <rename>release_year</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>id</name>
+        <rename>id</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>0</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>type</name>
+        <rename>type</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>duration</name>
+        <rename>duration</rename>
+        <type>String</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask/>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -885,7 +1020,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
+      <xloc>832</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -926,7 +1061,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
+      <xloc>832</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1111,7 +1246,7 @@ else final_date_added = date_added;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
+      <xloc>1376</xloc>
       <yloc>32</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1256,7 +1391,7 @@ else final_date_added = date_added;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>960</xloc>
+      <xloc>992</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1342,8 +1477,8 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>592</yloc>
+      <xloc>128</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1367,14 +1502,14 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>720</yloc>
+      <xloc>944</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
+    <name>Make type and age in the standard format</name>
+    <type>ReplaceString</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -1383,25 +1518,44 @@ else final_release_year = release_year;
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <send_true_to/>
-    <send_false_to/>
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>Value</leftvalue>
-        <function>=</function>
-        <rightvalue/>
-        <value>
-          <name>constant</name>
-          <type>Integer</type>
-          <text>1</text>
-          <length>-1</length>
-          <precision>0</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
-      </condition>
-    </compare>
+    <fields>
+      <field>
+        <in_stream_name>Type</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>0</replace_string>
+        <replace_by_string>Movie</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>Type</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>1</replace_string>
+        <replace_by_string>TV Show</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>Age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>all</replace_string>
+        <replace_by_string>ALL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
     <attributes/>
     <cluster_schema/>
     <remotesteps>
@@ -1411,8 +1565,8 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1024</xloc>
-      <yloc>720</yloc>
+      <xloc>736</xloc>
+      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1445,7 +1599,7 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1232</xloc>
+      <xloc>1264</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1479,13 +1633,13 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
+      <xloc>1216</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Merge join</name>
+    <name>Merge Streaming services with titles</name>
     <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1496,7 +1650,7 @@ else final_release_year = release_year;
       <schema_name/>
     </partitioning>
     <join_type>RIGHT OUTER</join_type>
-    <step1>Add sequence</step1>
+    <step1>Add id field</step1>
     <step2>Sort rows 8</step2>
     <keys_1>
       <key>streaming_service</key>
@@ -1513,13 +1667,13 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1568</xloc>
+      <xloc>1504</xloc>
       <yloc>864</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Merge join 3</name>
+    <name>Merge competition data with netflix/disney+/amazon prime</name>
     <type>MergeJoin</type>
     <description/>
     <distribute>Y</distribute>
@@ -1547,13 +1701,13 @@ else final_release_year = release_year;
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>480</yloc>
+      <xloc>1216</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Modified JavaScript value 3</name>
+    <name>One-hot encoding services</name>
     <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
@@ -1634,8 +1788,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
-      <yloc>720</yloc>
+      <xloc>944</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1683,7 +1837,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       <exclude_filemask/>
       <file_required>N</file_required>
       <include_subfolders>N</include_subfolders>
-      <name>C:/Users/ritap/OneDrive/Ambiente de Trabalho/Faculdade/5 Ano/Business Intelligence/Homework/datasets/amazon_prime_titles.csv</name>
+      <name>${PATH}\datasets/amazon_prime_titles.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -1909,7 +2063,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>144</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1953,7 +2107,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>C:\Users\ritap\OneDrive\Ambiente de Trabalho\Faculdade\5 Ano\Business Intelligence\Homework\datasets\disney_plus_titles.csv</name>
+      <name>${PATH}\datasets\disney_plus_titles.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2179,7 +2333,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>144</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2223,7 +2377,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>C:/Users/ritap/OneDrive/Ambiente de Trabalho/Faculdade/5 Ano/Business Intelligence/Homework/datasets/MoviesOnStreamingPlatforms_1.csv</name>
+      <name>${PATH}\datasets/MoviesOnStreamingPlatforms_1.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2469,7 +2623,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>144</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2513,7 +2667,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
     <length>Characters</length>
     <add_to_result_filenames>Y</add_to_result_filenames>
     <file>
-      <name>C:\Users\ritap\OneDrive\Ambiente de Trabalho\Faculdade\5 Ano\Business Intelligence\Homework\datasets\netflix_titles.csv</name>
+      <name>${PATH}\datasets\netflix_titles.csv</name>
       <filemask/>
       <exclude_filemask/>
       <file_required>N</file_required>
@@ -2739,50 +2893,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>112</xloc>
+      <xloc>144</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove description &amp; country</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>description</name>
-      </remove>
-      <remove>
-        <name>country</name>
-      </remove>
-      <remove>
-        <name>show_id</name>
-      </remove>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>480</xloc>
-      <yloc>112</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Remove description &amp; country 2</name>
+    <name>Remove description &amp; country &amp; show_id</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -2814,12 +2931,12 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>512</xloc>
-      <yloc>224</yloc>
+      <yloc>16</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove description &amp; country 3</name>
+    <name>Remove description &amp; country 2  &amp; show_id</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -2850,8 +2967,45 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
-      <yloc>320</yloc>
+      <xloc>512</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove description &amp; country 3 &amp; show_id</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>description</name>
+      </remove>
+      <remove>
+        <name>country</name>
+      </remove>
+      <remove>
+        <name>show_id</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2889,7 +3043,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>352</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2928,7 +3082,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>368</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2967,7 +3121,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>336</xloc>
+      <xloc>368</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3006,13 +3160,78 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>320</xloc>
+      <xloc>416</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove unused columns</name>
+    <name>Remove unecessary rows</name>
+    <type>FilterRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <send_true_to/>
+    <send_false_to/>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>Value</leftvalue>
+            <function>=</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>Integer</type>
+              <text>1</text>
+              <length>-1</length>
+              <precision>0</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND NOT</operator>
+            <leftvalue>age</leftvalue>
+            <function>LIKE</function>
+            <rightvalue/>
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>% min</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask/>
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>720</xloc>
+      <yloc>752</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove unused fields</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3088,13 +3307,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
+      <xloc>1216</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove unused columns 2</name>
+    <name>Remove unused fields 2</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3146,13 +3365,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1248</xloc>
-      <yloc>592</yloc>
+      <xloc>416</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Remove unused columns 3</name>
+    <name>Remove unused fields 3</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3201,8 +3420,90 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>368</xloc>
-      <yloc>720</yloc>
+      <xloc>1216</xloc>
+      <yloc>608</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Remove unused fields 4</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>age</name>
+      </remove>
+      <remove>
+        <name>cast</name>
+      </remove>
+      <remove>
+        <name>date_added</name>
+      </remove>
+      <remove>
+        <name>director</name>
+      </remove>
+      <remove>
+        <name>duration</name>
+      </remove>
+      <remove>
+        <name>listed_in</name>
+      </remove>
+      <remove>
+        <name>release_year</name>
+      </remove>
+      <remove>
+        <name>title</name>
+      </remove>
+      <remove>
+        <name>type</name>
+      </remove>
+      <remove>
+        <name>age_1</name>
+      </remove>
+      <remove>
+        <name>cast_1</name>
+      </remove>
+      <remove>
+        <name>date_added_1</name>
+      </remove>
+      <remove>
+        <name>director_1</name>
+      </remove>
+      <remove>
+        <name>duration_1</name>
+      </remove>
+      <remove>
+        <name>listed_in_1</name>
+      </remove>
+      <remove>
+        <name>release_year_1</name>
+      </remove>
+      <remove>
+        <name>title_1</name>
+      </remove>
+      <remove>
+        <name>type_1</name>
+      </remove>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1456</xloc>
+      <yloc>144</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3337,13 +3638,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>528</xloc>
+      <xloc>560</xloc>
       <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Rename new columns</name>
+    <name>Rename new fields</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3401,13 +3702,77 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
+      <xloc>1664</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Rename new fields 2</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>final_type</name>
+        <rename>type</rename>
+      </field>
+      <field>
+        <name>final_title</name>
+        <rename>title</rename>
+      </field>
+      <field>
+        <name>final_age</name>
+        <rename>age</rename>
+      </field>
+      <field>
+        <name>final_cast</name>
+        <rename>cast</rename>
+      </field>
+      <field>
+        <name>final_director</name>
+        <rename>director</rename>
+      </field>
+      <field>
+        <name>final_duration</name>
+        <rename>duration</rename>
+      </field>
+      <field>
+        <name>final_listed_in</name>
+        <rename>listed_in</rename>
+      </field>
+      <field>
+        <name>final_release_year</name>
+        <rename>release_year</rename>
+      </field>
+      <field>
+        <name>final_date_added</name>
+        <rename>date_added</rename>
+      </field>
+      <select_unspecified>Y</select_unspecified>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1456</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Rename new columns 2</name>
+    <name>Rename new fields 2 2</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3445,13 +3810,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1504</xloc>
-      <yloc>592</yloc>
+      <xloc>736</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Rename new columns 3</name>
+    <name>Rename new fields 3</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3501,8 +3866,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
-      <yloc>720</yloc>
+      <xloc>1456</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3533,8 +3898,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
-      <yloc>80</yloc>
+      <xloc>656</xloc>
+      <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3565,8 +3930,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>192</yloc>
+      <xloc>656</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3597,76 +3962,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
-      <yloc>304</yloc>
+      <xloc>656</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Replace in string 4</name>
-    <type>ReplaceString</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>Type</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>0</replace_string>
-        <replace_by_string>Movie</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>Type</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>1</replace_string>
-        <replace_by_string>TV Show</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-      <field>
-        <in_stream_name>Age</in_stream_name>
-        <out_stream_name/>
-        <use_regex>yes</use_regex>
-        <replace_string>all</replace_string>
-        <replace_by_string>ALL</replace_by_string>
-        <set_empty_string>N</set_empty_string>
-        <replace_field_by_string/>
-        <whole_word>no</whole_word>
-        <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normaliser</name>
+    <name>Row normaliser - services</name>
     <type>Normaliser</type>
     <description/>
     <distribute>Y</distribute>
@@ -3708,13 +4010,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>896</xloc>
-      <yloc>720</yloc>
+      <xloc>416</xloc>
+      <yloc>752</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values</name>
+    <name>Select Streaming service</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3725,61 +4027,10 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       <schema_name/>
     </partitioning>
     <fields>
+      <field>
+        <name>streaming_service</name>
+      </field>
       <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>age</name>
-      </remove>
-      <remove>
-        <name>cast</name>
-      </remove>
-      <remove>
-        <name>date_added</name>
-      </remove>
-      <remove>
-        <name>director</name>
-      </remove>
-      <remove>
-        <name>duration</name>
-      </remove>
-      <remove>
-        <name>listed_in</name>
-      </remove>
-      <remove>
-        <name>release_year</name>
-      </remove>
-      <remove>
-        <name>title</name>
-      </remove>
-      <remove>
-        <name>type</name>
-      </remove>
-      <remove>
-        <name>age_1</name>
-      </remove>
-      <remove>
-        <name>cast_1</name>
-      </remove>
-      <remove>
-        <name>date_added_1</name>
-      </remove>
-      <remove>
-        <name>director_1</name>
-      </remove>
-      <remove>
-        <name>duration_1</name>
-      </remove>
-      <remove>
-        <name>listed_in_1</name>
-      </remove>
-      <remove>
-        <name>release_year_1</name>
-      </remove>
-      <remove>
-        <name>title_1</name>
-      </remove>
-      <remove>
-        <name>type_1</name>
-      </remove>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3790,13 +4041,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1456</xloc>
-      <yloc>176</yloc>
+      <xloc>1392</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 2</name>
+    <name>Select fields to use</name>
     <type>SelectValues</type>
     <description/>
     <distribute>Y</distribute>
@@ -3808,42 +4059,24 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>final_type</name>
-        <rename>type</rename>
+        <name>title</name>
       </field>
       <field>
-        <name>final_title</name>
-        <rename>title</rename>
+        <name>age</name>
       </field>
       <field>
-        <name>final_age</name>
-        <rename>age</rename>
+        <name>release_year</name>
       </field>
       <field>
-        <name>final_cast</name>
-        <rename>cast</rename>
+        <name>id</name>
       </field>
       <field>
-        <name>final_director</name>
-        <rename>director</rename>
+        <name>type</name>
       </field>
       <field>
-        <name>final_duration</name>
-        <rename>duration</rename>
+        <name>duration</name>
       </field>
-      <field>
-        <name>final_listed_in</name>
-        <rename>listed_in</rename>
-      </field>
-      <field>
-        <name>final_release_year</name>
-        <rename>release_year</rename>
-      </field>
-      <field>
-        <name>final_date_added</name>
-        <rename>date_added</rename>
-      </field>
-      <select_unspecified>Y</select_unspecified>
+      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3854,13 +4087,13 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1616</xloc>
-      <yloc>176</yloc>
+      <xloc>736</xloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 3</name>
+    <name>Select only streaming_service and id fields</name>
     <type>SelectValues</type>
     <description/>
     <distribute>N</distribute>
@@ -3888,14 +4121,14 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1312</xloc>
-      <yloc>720</yloc>
+      <xloc>1168</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Select values 4</name>
-    <type>SelectValues</type>
+    <name>Services Table</name>
+    <type>TableOutput</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -3904,26 +4137,32 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
+    <connection>PostgreSQL</connection>
+    <schema>public</schema>
+    <table>streamingservice</table>
+    <commit>1000</commit>
+    <truncate>N</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>Y</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
     <fields>
       <field>
-        <name>title</name>
+        <column_name>name</column_name>
+        <stream_name>streaming_service</stream_name>
       </field>
       <field>
-        <name>age</name>
+        <column_name>id</column_name>
+        <stream_name>id</stream_name>
       </field>
-      <field>
-        <name>release_year</name>
-      </field>
-      <field>
-        <name>id</name>
-      </field>
-      <field>
-        <name>type</name>
-      </field>
-      <field>
-        <name>duration</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
     </fields>
     <attributes/>
     <cluster_schema/>
@@ -3934,39 +4173,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>816</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 5</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>streaming_service</name>
-      </field>
-      <select_unspecified>N</select_unspecified>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1504</xloc>
-      <yloc>720</yloc>
+      <xloc>1856</xloc>
+      <yloc>784</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3999,7 +4207,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>1008</xloc>
       <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4033,7 +4241,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>1008</xloc>
       <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4067,7 +4275,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>1008</xloc>
       <yloc>112</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4101,7 +4309,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>832</xloc>
+      <xloc>944</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4135,7 +4343,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1616</xloc>
+      <xloc>1664</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4169,7 +4377,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1344</xloc>
+      <xloc>1456</xloc>
       <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4211,8 +4419,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1616</xloc>
-      <yloc>720</yloc>
+      <xloc>1520</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4253,8 +4461,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1456</xloc>
-      <yloc>800</yloc>
+      <xloc>1392</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4321,208 +4529,8 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1392</xloc>
-      <yloc>896</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field/>
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description/>
-    <fields>
-      <field>
-        <name>streaming_service</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1760</xloc>
-      <yloc>720</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 6</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>title</name>
-        <rename>title</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>age</name>
-        <rename>age</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>release_year</name>
-        <rename>release_year</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>id</name>
-        <rename>id</rename>
-        <type>Integer</type>
-        <length>-2</length>
-        <precision>0</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>type</name>
-        <rename>type</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>duration</name>
-        <rename>duration</rename>
-        <type>String</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask/>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
       <xloc>1136</xloc>
-      <yloc>896</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows 2</name>
-    <type>Unique</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field/>
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description/>
-    <fields>
-      <field>
-        <name>id</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1264</xloc>
-      <yloc>896</yloc>
+      <yloc>880</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4573,14 +4581,14 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1568</xloc>
-      <yloc>1024</yloc>
+      <xloc>1696</xloc>
+      <yloc>944</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Services Table</name>
-    <type>TableOutput</type>
+    <name>Unique rows</name>
+    <type>Unique</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -4589,31 +4597,14 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <connection>PostgreSQL</connection>
-    <schema>public</schema>
-    <table>streamingservice</table>
-    <commit>1000</commit>
-    <truncate>N</truncate>
-    <ignore_errors>N</ignore_errors>
-    <use_batch>Y</use_batch>
-    <specify_fields>Y</specify_fields>
-    <partitioning_enabled>N</partitioning_enabled>
-    <partitioning_field/>
-    <partitioning_daily>N</partitioning_daily>
-    <partitioning_monthly>Y</partitioning_monthly>
-    <tablename_in_field>N</tablename_in_field>
-    <tablename_field/>
-    <tablename_in_table>Y</tablename_in_table>
-    <return_keys>N</return_keys>
-    <return_field/>
+    <count_rows>N</count_rows>
+    <count_field/>
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description/>
     <fields>
       <field>
-        <column_name>name</column_name>
-        <stream_name>streaming_service</stream_name>
-      </field>
-      <field>
-        <column_name>id</column_name>
-        <stream_name>id</stream_name>
+        <name>streaming_service</name>
+        <case_insensitive>N</case_insensitive>
       </field>
     </fields>
     <attributes/>
@@ -4625,13 +4616,48 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1904</xloc>
-      <yloc>816</yloc>
+      <xloc>1616</xloc>
+      <yloc>736</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Block this step until steps finish</name>
+    <name>Unique rows 2</name>
+    <type>Unique</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <count_rows>N</count_rows>
+    <count_field/>
+    <reject_duplicate_row>N</reject_duplicate_row>
+    <error_description/>
+    <fields>
+      <field>
+        <name>id</name>
+        <case_insensitive>N</case_insensitive>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1040</xloc>
+      <yloc>880</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Wait for other tables to be created</name>
     <type>BlockUntilStepsFinish</type>
     <description/>
     <distribute>Y</distribute>
@@ -4647,11 +4673,7 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
         <CopyNr>0</CopyNr>
       </step>
       <step>
-        <name>Title table</name>
-        <CopyNr>0</CopyNr>
-      </step>
-      <step>
-        <name>Add id column</name>
+        <name>Title Table</name>
         <CopyNr>0</CopyNr>
       </step>
     </steps>
@@ -4664,8 +4686,491 @@ if(service_1_1 != null) disney_plus = 1;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1568</xloc>
+      <xloc>1504</xloc>
       <yloc>944</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Replace in string</name>
+    <type>ReplaceString</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>NC-17</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-MA</replace_string>
+        <replace_by_string>17+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-14</replace_string>
+        <replace_by_string>14+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>R</replace_string>
+        <replace_by_string>17+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-PG</replace_string>
+        <replace_by_string>14+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>PG-13 </replace_string>
+        <replace_by_string>13+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>PG </replace_string>
+        <replace_by_string>15+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-G</replace_string>
+        <replace_by_string>ALL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-Y7</replace_string>
+        <replace_by_string>7+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-Y</replace_string>
+        <replace_by_string>2+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>G</replace_string>
+        <replace_by_string>ALL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>NR</replace_string>
+        <replace_by_string>6+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-NR</replace_string>
+        <replace_by_string>6+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-Y7-FV</replace_string>
+        <replace_by_string>7+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>UR</replace_string>
+        <replace_by_string>UNRATED</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>NOT_RATE</replace_string>
+        <replace_by_string>UNRATED</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>ALL_AGES</replace_string>
+        <replace_by_string>ALL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>AGES_18_</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>AGES_16_</replace_string>
+        <replace_by_string>16+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>AALLES_16_</replace_string>
+        <replace_by_string>16+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>AALLES_18_</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>ALL_AALLES</replace_string>
+        <replace_by_string>ALL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>N17+</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>NOT_17\+ATE</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-N17+</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>U17+</replace_string>
+        <replace_by_string>17+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>UN17+ATED</replace_string>
+        <replace_by_string>17+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>7+-fv</replace_string>
+        <replace_by_string>7+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>PALL-13</replace_string>
+        <replace_by_string>13</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>PALL</replace_string>
+        <replace_by_string>ALL</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>TV-18+</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>U18\+ATED</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>7\+-FV</replace_string>
+        <replace_by_string>7+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>17\+\+</replace_string>
+        <replace_by_string>17+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>18\++</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>U18\+\+ATED</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>NOT_17\+\+ATE</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+      <field>
+        <in_stream_name>age</in_stream_name>
+        <out_stream_name/>
+        <use_regex>yes</use_regex>
+        <replace_string>U18\+\+\+ATED</replace_string>
+        <replace_by_string>18+</replace_by_string>
+        <set_empty_string>N</set_empty_string>
+        <replace_field_by_string/>
+        <whole_word>no</whole_word>
+        <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1584</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
